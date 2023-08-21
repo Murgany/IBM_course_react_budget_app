@@ -4,15 +4,19 @@ import React, { createContext, useReducer } from 'react';
 export const AppReducer = (state, action) => {
     let budget = 0;
     switch (action.type) {
+
         case 'ADD_EXPENSE':
+
             let total_budget = 0;
             total_budget = state.expenses.reduce(
                 (previousExp, currentExp) => {
                     return previousExp + currentExp.cost
                 },0
             );
+
             total_budget = total_budget + action.payload.cost;
             action.type = "DONE";
+
             if(total_budget <= state.budget) {
                 total_budget = 0;
                 state.expenses.map((currentExp)=> {
@@ -21,16 +25,19 @@ export const AppReducer = (state, action) => {
                     }
                     return currentExp
                 });
+                return {...state,};
+            } else if (isNaN(action.payload.cost) || action.payload.cost < 1) {
+                alert("Please enter a valid number. The minimum is 1.");
                 return {
-                    ...state,
+                  ...state
                 };
             } else {
-                alert("Cannot increase the allocation! Out of funds");
+                alert("Cannot increase the allocation! funds are not enough!");
                 return {
                     ...state
                 }
             }
-            case 'RED_EXPENSE':
+            case 'REDUCE_EXPENSE':
                 const red_expenses = state.expenses.map((currentExp)=> {
                     if (currentExp.name === action.payload.name && currentExp.cost - action.payload.cost >= 0) {
                         currentExp.cost =  currentExp.cost - action.payload.cost;
@@ -60,16 +67,12 @@ export const AppReducer = (state, action) => {
         case 'SET_BUDGET':
             action.type = "DONE";
             state.budget = action.payload;
-
-            return {
-                ...state,
-            };
+            return { ...state }
+        
         case 'CHG_CURRENCY':
             action.type = "DONE";
             state.currency = action.payload;
-            return {
-                ...state
-            }
+            return { ...state }
 
         default:
             return state;
