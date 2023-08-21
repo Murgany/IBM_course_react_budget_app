@@ -1,21 +1,25 @@
-import React, {useContext} from "react";
-import { AppContext } from '../context/AppContext';
-
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 const Remaining = () => {
-//   const {remaining} = useContext(AppContext)
+  // Access the app context and retrieve the expenses, budget, and currency values
   const { expenses, budget, currency } = useContext(AppContext);
 
+  // Calculate the total expenses by summing up the cost of each expense
   const totalExpenses = expenses.reduce((total, item) => {
-    return (total = total + item.cost)
+    return (total += item.cost);
   }, 0);
 
-   const alertType = totalExpenses > budget ? 'alert-danger' : 'alert-success';
+  // Determine the alert type based on whether the total expenses exceed the budget
+  const alertType = totalExpenses > budget ? "alert-danger" : "alert-success";
 
   return (
-    <div className={`alert ${alertType}`}>Remaining: {currency}{ budget - totalExpenses }</div>
+    // Display the remaining budget with the currency symbol and appropriate alert type
+    <div className={`alert ${alertType}`}>
+      Remaining: {currency}
+      {budget - totalExpenses}
+    </div>
   );
-
 };
 
-export default Remaining
+export default Remaining;

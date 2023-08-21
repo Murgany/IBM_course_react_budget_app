@@ -3,8 +3,11 @@ import { TiDelete } from 'react-icons/ti';
 import { AppContext } from "../context/AppContext";
 
 const ExpenseItem = (props) => {
+    // retrieve dispatch and currency from App context
+    // dispatch takes 2 args; type and payload 
     const { dispatch, currency } = useContext(AppContext);
 
+    // delete expense
     const handleDeleteExpense = () => {
         dispatch({
             type: 'DELETE_EXPENSE',
@@ -12,6 +15,7 @@ const ExpenseItem = (props) => {
         });
     };
 
+    // Increase funds allocation
     const IncreaseAllocation = (name) => {
         const expense = {
             name: name,
@@ -23,6 +27,7 @@ const ExpenseItem = (props) => {
         })
     }
 
+    // Dencrease funds allocation
     const decreaseAllocation = (name) => {
         const expense = {
             name: name,

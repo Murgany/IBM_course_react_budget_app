@@ -9,7 +9,7 @@ return (
   <table className="table">
      <thead className="thead-light"> 
         <tr>
-            <th scope="col">Epartment</th>
+            <th scope="col">Department</th>
             <th scope="col">Allocated Budget</th>
             <th scope="col">Increase by 10</th>
             <th scope="col">Decrease by 10</th>

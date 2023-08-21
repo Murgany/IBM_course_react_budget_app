@@ -38,8 +38,6 @@
 }
 
 .currency {
-  /* background-color: inherit;  */
-  /* border: 1px solid #ccc;\ */
   padding: 5px; /* Adjust the padding of the select element */
   border: 1px solid #61dafb;
 }
