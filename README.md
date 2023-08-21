@@ -14,4 +14,4 @@ Delete costs / expenses from different departments. <br/>
 
 <br/>
 
-<img src="budget-app.PNG" style="width: 100%; height: 100%"/>
+<img src="/public/budget-app.PNG" style="width: 100%; height: 100%"/>
